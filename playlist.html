@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist - YouTube Clone</title>
+    <link rel="stylesheet" href="playlist.css">
+</head>
+<body>
+    <div class="container">
+    <aside>
+      <div class="bars">
+        <div class="bars_icon">
+          <img src="icons/bars.svg" alt="bars">
+        </div>
+        <div class="side-icons">
+          <i>
+            <a href="index.html">
+              <img src="icons/home.svg" alt="home">
+            </a>
+          </i>
+          <p>Home</p>
+        </div>
+        <div class="side-icons">
+          <i>
+            <a href="https://www.youtube.com/shorts/XrMleE_YmEY" target="_blank">
+              <img src="icons/shorts.svg" alt="shorts">
+            </a>
+          </i>
+          <p>Shorts</p>
+        </div>
+        <div class="side-icons">
+          <i>
+            <a href="SUBS.html" target="_blank">
+              <img src="icons/video-gallary.svg" alt="video-gallery">
+            </a>
+          </i>
+          <p>Subscriptions</p>
+        </div>
+        <div class="side-icons">
+
+          <i>
+            <a href="playlist.html" target="_blank">
+              <img src="C:\Users\Adarsh\Desktop\youtubeCLONE\icons\playlist-svgrepo-com.svg" alt="playlist ">
+            </a>
+          </i>
+          <p>playlist</p>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-container">
+      <header>
+        <nav>
+          <div class="logo">
+            <a href="index.html">
+              <img src="images/youtube-logo.png" alt="YouTube logo">
+            </a>
+          </div>
+          
+          <div class="centre-nav">
+            <div class="search">
+              <input type="text" id="search-input" placeholder="Search">
+              <button id="search-button" type="button" onclick="document.getElementById('search-input').focus();">
+              <img src="icons/search.svg" alt="search">
+              </button>
+            </div>
+            <div class="mic">
+              <img src="icons/mic.svg" alt="mic" id="mic-btn">
+            </div>
+          </div>
+          <div class="side-nav">
+            <i><img src="icons/video-add.svg" alt="video-add"></i>
+            <i><img src="icons/dot-grid.svg" alt="dot-grid"></i>
+            <i><img src="icons/bell.svg" alt="bell"></i>
+            <i>
+              <a href="login_page.html" target="_blank">
+                <img src="images/avatar.png" height="40" width="40" alt="avatar">
+              </a>
+            </i>
+          </div>
+        </nav>
+
+        <div class="playlist-container">
+        <div class="playlist-header">
+            <img 
+                src="https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg" 
+                alt="Playlist Thumbnail" 
+                class="playlist-thumb"
+                id="playlist-thumb"
+            >
+            <div class="playlist-info">
+                <h2>My Favorite Mix</h2>
+                <p>5 videos • Public</p>
+                <p>Created by You</p>
+            </div>
+        </div>
+        <div class="playlist-videos" id="playlist-videos" style="display:none;">
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=ScMzIvxBSi4" target="_blank">
+                    <img src="https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg" alt="Video 1">
+                   </a>
+                    <div class="video-info">
+                        <h3>Chill Lofi Beats</h3>
+                        <p>Lofi Girl</p>
+                     </div>
+               </div>
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=5qap5aO4i9A" target="_blank">
+                    <img src="https://i.ytimg.com/vi/5qap5aO4i9A/hqdefault.jpg" alt="Video 2">
+                    </a>
+                    <div class="video-info">
+                        <h3>lofi hip hop radio – beats to relax/study to</h3>
+                        <p>Lofi Girl</p>
+                    </div>
+                
+            </div>
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=DWcJFNfaw9c" target="_blank">
+                    <img src="https://i.ytimg.com/vi/DWcJFNfaw9c/hqdefault.jpg" alt="Video 3">
+                    </a>
+                    <div class="video-info">
+                        <h3>Jazzhop Study Music</h3>
+                        <p>Chillhop Music</p>
+                    </div>
+                
+            </div>
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=kgx4WGK0oNU" target="_blank">
+                    <img src="https://i.ytimg.com/vi/kgx4WGK0oNU/hqdefault.jpg" alt="Video 4">
+                    </a>
+                    <div class="video-info">
+                        <h3>Morning Coffee Jazz</h3>
+                        <p>Relax Cafe Music</p>
+                    </div>
+                
+            </div>
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=2Vv-BfVoq4g" target="_blank">
+                    <img src="https://i.ytimg.com/vi/2Vv-BfVoq4g/hqdefault.jpg" alt="Video 5">
+                </a>
+                <div class="video-info">
+                        <h3>Ed Sheeran - Perfect</h3>
+                        <p>Ed Sheeran</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        // Show playlist videos on thumbnail click
+        document.getElementById('playlist-thumb').onclick = function() {
+            document.getElementById('playlist-videos').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('playlist-videos').offsetTop - 40, behavior: 'smooth' });
+        };
+    </script>
+  
+  
+</body>
+</html>
+
+
+

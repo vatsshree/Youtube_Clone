@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFcpSnCAZdbqXkN3POxT9E1I_Z1bIw4-Q",
+      authDomain: "clone-ce4c2.firebaseapp.com",
+      projectId: "clone-ce4c2",
+      storageBucket: "clone-ce4c2.appspot.com",
+      messagingSenderId: "288699982090",
+      appId: "1:288699982090:web:75786526263ca0a9805af"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // End session on tab/browser close
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).catch(err => {
+      console.error("Session persistence error:", err.message);
+    });
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      background-image: url("images/bgc.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      
+      background-size: fixed;
+    }
+
+    .login-box {
+      max-width: 500px;
+      margin-left: 40%;
+      margin-top: 10%;
+      margin-right: 100px;
+    
+      padding: 30px;
+      
+      background-color: #fed957;
+      text-align: center;
+      
+      
+    }
+
+    .login-box:hover
+    {
+      box-shadow: 0 0 10px rgb(113, 107, 32);
+      transform: scale(1.05);
+    }
+
+    #google-login {
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px auto;
+      border-radius: 10px;
+      height: 45px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      padding: 0 20px;
+    }
+
+    #google-login:hover {
+      box-shadow: 0 0 10px rgb(250, 10, 10);
+      transform: scale(1.12);
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    #user-info {
+      margin-top: 20px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #user-photo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="images/icons8-google.svg" alt="Google icon" width="50" />
+    <h2>Sign In</h2>
+    <p>Use your Google account to sign in.</p>
+
+    <!-- Google Sign-In Button -->
+    <button id="google-login">
+      <img src="images/icons8-google.svg" width="20" />
+      <span>Click here to proceed</span>
+    </button>
+
+    <!-- Error message -->
+    <div id="error-message" class="error"></div>
+
+    <!-- User Info Display -->
+    <div id="user-info">
+      <img id="user-photo" src="" alt="User Photo" />
+      <span id="user-name"></span>
+    </div>
+  </div>
+
+  <script>
+    const googleLoginBtn = document.getElementById('google-login');
+    const errorMessage = document.getElementById('error-message');
+    const userInfoDiv = document.getElementById('user-info');
+    const userNameSpan = document.getElementById('user-name');
+    const userPhotoImg = document.getElementById('user-photo');
+
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    googleLoginBtn.addEventListener('click', () => {
+      firebase.auth().signInWithPopup(provider)
+        .then(result => {
+          showUserInfo(result.user);
+        })
+        .catch(error => {
+          errorMessage.textContent = "Google Sign-In failed: " + error.message;
+        });
+    });
+
+    function showUserInfo(user) {
+      userNameSpan.textContent = user.displayName || user.email;
+      userPhotoImg.src = user.photoURL || 'images/default-avatar.png';
+      userInfoDiv.style.display = 'flex';
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 4000);
+    }
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        showUserInfo(user);
+      }
+    });
+  </script>
+</body>
+</html>
